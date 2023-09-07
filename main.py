@@ -1,10 +1,12 @@
+import os
+
 from generate import *
 from wolfram_api import *
-import os
 
 # load system prompt (default)
 with open(os.path.join(PATH, 'system_prompt.txt')) as f:
     sys_prompt = f.read().strip()
+
 
 def converse():
     ctx = []
@@ -12,6 +14,7 @@ def converse():
         ctx.append({"role": "system", "content": sys_prompt})
     
     next_prompt = None
+    
     def gen_next(p):
         nonlocal next_prompt
         ctx.append({"role": "user", "content": p})
@@ -30,9 +33,11 @@ def converse():
             next_prompt = None
         
         gen_next(prompt)
-        
+
+
 def main():
     converse()
-    
+
+
 if __name__ == "__main__":
     main()

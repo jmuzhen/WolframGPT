@@ -34,5 +34,5 @@ def gen_single(prompt=None, model='gpt-3.5-turbo', provider=DEFAULT_PROVIDER, pr
     
     if not r.endswith("\n"):
         print()
-        
+    
     return r

@@ -1,5 +1,7 @@
-import generate
 import time
+
+import generate
+
 
 def speedtest_provider(provider, prompt="Hello, how are you?", e=10):
     t = 0
@@ -13,7 +15,7 @@ def speedtest_provider(provider, prompt="Hello, how are you?", e=10):
             err += 1
             print(f"Error @ {i}", end=" ", flush=True)
             continue
-
+        
         t += x
         print(round(x, 2), end=" ", flush=True)
     
@@ -21,5 +23,5 @@ def speedtest_provider(provider, prompt="Hello, how are you?", e=10):
         print(f"Error on all {e} iterations")
         return
     t = round(t / (e - err), 2)
-
+    
     print(f"Epochs: {e}, Average time: {t} seconds, Errors: {err}")
