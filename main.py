@@ -1,19 +1,20 @@
 from generate import *
 from wolfram_api import *
+import os
 
 # load system prompt (default)
-with open('system_prompt.txt', 'r') as f:
+with open(os.path.join(PATH, 'system_prompt.txt')) as f:
     sys_prompt = f.read().strip()
 
-def converse(sys_prompt=None):
+def converse():
     ctx = []
     if sys_prompt:
         ctx.append({"role": "system", "content": sys_prompt})
     
     next_prompt = None
-    def gen_next(prompt):
+    def gen_next(p):
         nonlocal next_prompt
-        ctx.append({"role": "user", "content": prompt})
+        ctx.append({"role": "user", "content": p})
         response = gen_single(ctx=ctx)  # response is implicitly printed
         ctx.append({"role": "assistant", "content": response})
         if "wolfram_api" in response:
@@ -31,4 +32,7 @@ def converse(sys_prompt=None):
         gen_next(prompt)
         
 def main():
-    converse(sys_prompt=sys_prompt)
+    converse()
+    
+if __name__ == "__main__":
+    main()

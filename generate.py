@@ -1,13 +1,13 @@
 # https://github.com/xtekky/gpt4free
 
 import g4f
-import time
 
 DEFAULT_PROVIDER = g4f.Provider.DeepAi
 
-def gen_single(prompt=None, model=g4f.Model.gpt_35_turbo, provider=DEFAULT_PROVIDER, print_response=True,
+
+def gen_single(prompt=None, model='gpt-3.5-turbo', provider=DEFAULT_PROVIDER, print_response=True,
                ctx=None):
-    STREAM = True  # dependent on provider, currently can only be manually set
+    STREAM = provider.supports_stream
     if ctx is None and prompt is None:
         return None
     
@@ -16,14 +16,14 @@ def gen_single(prompt=None, model=g4f.Model.gpt_35_turbo, provider=DEFAULT_PROVI
     
     # streamed completion
     response = g4f.ChatCompletion.create(model=model, messages=ctx,
-                                        provider=provider,
-                                        stream=STREAM) # alterative model setting
+                                         provider=provider,
+                                         stream=STREAM)  # alterative model setting
     
     if not print_response:
         return
     
     r = ""
-
+    
     if STREAM:
         for message in response:
             r += message
@@ -31,5 +31,8 @@ def gen_single(prompt=None, model=g4f.Model.gpt_35_turbo, provider=DEFAULT_PROVI
     else:
         r = response
         print(response)
-
+    
+    if not r.endswith("\n"):
+        print()
+        
     return r
