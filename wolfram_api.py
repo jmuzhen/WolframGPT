@@ -12,8 +12,11 @@ with open(os.path.join(PATH, 'WOLFRAM_API_KEY.txt'), 'r') as f:
 # Wolfram API format:
 # https://www.wolframalpha.com/api/v1/llm-api?input=<input>&appid=<API key>&maxchars=<maxchars>
 
-def wolfram_api(input_, maxchars=1000):
-    url = f"https://www.wolframalpha.com/api/v1/llm-api?input={input_}&appid={WOLFRAM_API_KEY}&maxchars={maxchars}"
+def wolfram_api(input_, maxchars=2000):
+    maxcharssuffix = ''
+    if maxchars:
+        maxcharssuffix = f"&maxchars={maxchars}"
+    url = f"https://www.wolframalpha.com/api/v1/llm-api?input={input_}&appid={WOLFRAM_API_KEY}{maxcharssuffix}"
     r = requests.get(url)
     return r.text.strip()
 
