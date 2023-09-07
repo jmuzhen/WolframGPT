@@ -33,22 +33,3 @@ def gen_single(prompt=None, model=g4f.Model.gpt_35_turbo, provider=DEFAULT_PROVI
         print(response)
 
     return r
-    
-
-def converse(sys_prompt=None):
-    ctx = []
-    if sys_prompt:
-        ctx.append({"role": "system", "content": sys_prompt})
-    
-    while True:
-        prompt = input("> ")
-        time_ = time.time()
-        ctx.append({"role": "user", "content": prompt})
-        response = gen_single(ctx=ctx)
-        ctx.append({"role": "assistant", "content": response})
-        print(f"\nTime: {round(time.time() - time_, 2)} seconds")
-
-
-if __name__ == "__main__":
-    sys_prompt = input("System prompt > ")
-    converse(sys_prompt=sys_prompt)
