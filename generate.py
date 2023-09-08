@@ -3,9 +3,10 @@
 import g4f
 
 DEFAULT_PROVIDER = g4f.Provider.DeepAi
+DEFAULT_MODEL = 'gpt-3.5-turbo'
 
 
-def gen_single(prompt=None, model='gpt-3.5-turbo', provider=DEFAULT_PROVIDER, print_response=True,
+def gen_single(prompt=None, model=DEFAULT_MODEL, provider=DEFAULT_PROVIDER, print_response=True,
                ctx=None):
     STREAM = provider.supports_stream
     if ctx is None and prompt is None:
