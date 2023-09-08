@@ -12,7 +12,7 @@ with open(os.path.join(PATH, 'WOLFRAM_API_KEY.txt'), 'r') as f:
 # Wolfram API format:
 # https://www.wolframalpha.com/api/v1/llm-api?input=<input>&appid=<API key>&maxchars=<maxchars>
 
-def wolfram_api(input_, maxchars=2000):
+def wolfram_api(input_, maxchars=500):
     maxcharssuffix = ''
     if maxchars:
         maxcharssuffix = f"&maxchars={maxchars}"
