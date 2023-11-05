@@ -6,6 +6,7 @@ DEFAULT_PROVIDER = g4f.Provider.Phind
 DEFAULT_MODEL = 'gpt-3.5-turbo'
 VERBOSE = False  # print wolfram API responses as well. Used for debugging.
 DEFAULT_STREAM = False  # whether to stream completion, even if provider supports it.
+WOLFRAM_PROMPT_LEN_WORDS = 40  # any prompt given longer than this will not be sent to Wolfram API
 
 
 def gen_single(prompt=None, model=DEFAULT_MODEL, provider=DEFAULT_PROVIDER, print_response=True,

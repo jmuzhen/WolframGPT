@@ -20,7 +20,7 @@ def converse():
         ctx.append({"role": "user", "content": p})
         response = gen_single(ctx=ctx)  # response is implicitly printed
         ctx.append({"role": "assistant", "content": response})
-        if "wolfram_api" in response:
+        if "wolfram_api" in response and len(response.split()) < WOLFRAM_PROMPT_LEN_WORDS:
             new_response = give_response(response)
             next_prompt = new_response
     
