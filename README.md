@@ -18,3 +18,14 @@ DEFAULT_MODEL = 'gpt-3.5-turbo'
 >**Note**
 > For an up-to-date list of the providers available, please check the 
 [official g4f README file](https://github.com/xtekky/gpt4free/blob/main/README.md#models).
+
+
+### Obtaining Wolfram API key
+>**Note**
+> A working Wolfram API key is required to run this project. You can get one for free by signing up.
+
+1. Go to https://developer.wolframalpha.com/ and create an account.
+2. Go to https://developer.wolframalpha.com/access and click "Get an App ID".
+3. Under API choose "LLM API" for optimal responses; other APIs can also be used.
+4. Copy the "App ID" field and place it in `WOLFRAM_API_KEY.txt`. Do not share it or
+your free API queries may be used by others!
