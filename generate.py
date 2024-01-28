@@ -6,12 +6,13 @@ g4f.debug.version_check = False
 
 DEFAULT_PROVIDER = g4f.Provider.Bing
 DEFAULT_MODEL = 'gpt-4'
+PRINT_RESPONSE = True  # print completion response.
 VERBOSE = False  # print wolfram API responses as well. Used for debugging.
 DEFAULT_STREAM = False  # whether to stream completion, even if provider supports it.
 WOLFRAM_PROMPT_LEN_WORDS = 80  # any prompt given longer than this will not be sent to Wolfram API
 
 
-def gen_single(prompt=None, model=DEFAULT_MODEL, provider=DEFAULT_PROVIDER, print_response=True,
+def gen_single(prompt=None, model=DEFAULT_MODEL, provider=DEFAULT_PROVIDER,
                ctx=None):
     STREAM = DEFAULT_STREAM and provider.supports_stream
     if ctx is None and prompt is None:
@@ -25,7 +26,7 @@ def gen_single(prompt=None, model=DEFAULT_MODEL, provider=DEFAULT_PROVIDER, prin
                                          provider=provider,
                                          stream=STREAM)  # alterative model setting
     
-    if not print_response:
+    if not PRINT_RESPONSE:
         return
     
     r = ""
