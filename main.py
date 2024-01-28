@@ -3,8 +3,8 @@ import os
 from generate import *
 from wolfram_api import *
 
-# load system prompt (default)
-with open(os.path.join(PATH, 'system_prompt.txt')) as f:
+# load system prompt (default to path /system_prompts/system_prompt.txt)
+with open(os.path.join(PATH, 'system_prompts/system_prompt.txt')) as f:
     sys_prompt = f.read().strip()
 
 
