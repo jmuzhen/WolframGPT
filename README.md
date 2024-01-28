@@ -17,6 +17,7 @@ DEFAULT_MODEL = 'gpt-3.5-turbo'
 
 >**Note**
 > For an up-to-date list of the providers available, please check the 
+[latest g4f documentation](https://g4f.mintlify.app/get-started/usage) or the
 [official g4f README file](https://github.com/xtekky/gpt4free/blob/main/README.md#models).
 
 
