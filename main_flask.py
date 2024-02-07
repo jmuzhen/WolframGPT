@@ -1,10 +1,13 @@
 from flask import Flask, request, jsonify, session
 from flask_cors import CORS
+from flask_session import Session
 from generate import *
 from wolfram_api import *
 
 app = Flask(__name__)
 app.secret_key = 'your secret key'  # replace with your secret key
+app.config['SESSION_TYPE'] = 'filesystem'
+Session(app)
 
 MAX_INPUT_LEN = 1024
 
@@ -57,6 +60,7 @@ def chat():
 
     session['ctx'] = ctx
     session['next_prompt'] = next_prompt
+    session.modified = True
 
     return jsonify({'response': response})
     
